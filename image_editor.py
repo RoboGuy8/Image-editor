@@ -1,21 +1,29 @@
 from PIL import Image
-obrazek = Image.open("mitata.jpg")
-sirka, vyska = obrazek.size
-x = 0
-while x < sirka:
-    y = 0
-    while y < vyska:
-        r, g, b = obrazek.getpixel((x,y))
-        prumer = int((r+g+b)/3)
-        r = r + r//2
-        g = g//3
-        b = 2*b
-        obrazek.putpixel((x,y), (r , g, b))
-        #if prumer > 150:
-         #   obrazek.putpixel((x,y), (255, 255, 255))
-        #else:
-         #   obrazek.putpixel((x,y), (0, 0, 0))
-        y += 1
-    x += 1
-obrazek.show()
+from filtry import green_filtr,blue_filtr,purple_filtr,iverted_filtr
 
+
+while(True):
+  print("""
+---------------------------------------------------
+Please chose wich filter to use by writing a number
+1: purple
+2: green
+3: blue
+4: surprise
+Or type "exit" to interrupt the program
+---------------------------------------------------
+  """)
+  filtr = input("filter number: ")
+
+  if filtr == "1":
+    purple_filtr()
+  elif filtr == "2":
+    green_filtr()
+  elif filtr == "3":
+    blue_filtr()
+  elif filtr == "4":
+    iverted_filtr()
+  elif filtr == "exit":
+    break
+  else:
+    print(f"Please chose valid number, not '{filtr}'")
